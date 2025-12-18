@@ -64,7 +64,7 @@ const MobileNavigation = () => {
 
 
         <div className="space-y-3 flex flex-col p-4 border-gray-200 border-t pt-4">
-          <button className="  py-2 border border-gray-200 text-[#000000] rounded  menu-item">Sign In</button>
+          <Link to={'/sign-in/'} className="  py-2 border border-gray-200 text-[#000000] rounded  menu-item">Sign In</Link>
           <button className="bg-[#48976a] text-white hover:bg-[#3EA56F] px-6 py-2 rounded transition-all menu-item">Get Started</button>
         </div>
       

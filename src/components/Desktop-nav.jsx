@@ -1,7 +1,10 @@
+import {  SignedIn, SignedOut, SignOutButton, useUser } from "@clerk/clerk-react"
 import { Link } from "react-router"
 
 
 const Desktop = () => {
+
+  const authed = useUser()
   return (
     <section className='fixed top-0 left-0 right-0 z-1  backdrop-blur w-full  border-b border-gray-200 items-center justify-center lg:block hidden'>
       <div className='flex justify-between  p-4 items-center  max-w-6xl mx-auto  z-10 backdrop-blur '>
@@ -35,9 +38,12 @@ const Desktop = () => {
 
 
 
-     <div className="space-x-4 ">
-          <button className=" px-10 py-2 border border-gray-200 text-[#000000] rounded ">Sign In</button>
-          <button className="bg-[#48976a] text-white hover:bg-[#3EA56F] px-6 py-2 rounded transition-all">Get Started</button>
+     <div className="space-x-4 flex">
+      
+       <Link to={'/sign-in/'} className=" px-10 py-2 border border-gray-200 text-[#000000] rounded "> Sign In</Link>
+      
+        
+      <button className="bg-[#48976a] text-white hover:bg-[#3EA56F] px-6 py-2 rounded transition-all">Get Started</button>
         </div>
       </div>
       
