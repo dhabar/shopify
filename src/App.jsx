@@ -6,7 +6,7 @@ import Cart from './pages/Cart'
 import Trending from './pages/Trending'
 import Desktop from './components/Desktop-nav'
 import MobileNavigation from './components/Mobile-navigation'
-import SigninPage from './pages/Sign-in'
+//import SigninPage from './pages/Sign-in'
 import Protected from './components/Protected'
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
          <Outlet/>
 
         <Routes>
-          <Route path='sign-in/*' element={<SigninPage/>}/>
+          
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={
@@ -37,3 +37,4 @@ const App = () => {
 
 export default App
 
+//<Route path='sign-in/*' element={<SigninPage/>}/>
