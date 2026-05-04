@@ -3,18 +3,21 @@ import {
   XMarkIcon,
   Bars4Icon,
   ClipboardDocumentListIcon,
+  Bars3BottomLeftIcon,
 } from "@heroicons/react/16/solid";
 import gsap from "gsap";
 import { useState, useRef, useLayoutEffect } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import Skeletonbutton from "./Skeleton";
+import { MoonIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 
 
 const MobileNavigation = () => {
   const { isLoaded,isSignedIn } = useUser();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const containerRef = useRef(null);
   const menuRef = useRef(null);
@@ -78,26 +81,17 @@ const MobileNavigation = () => {
         <Link to="/" className="text-3xl font-bold font-mono">
           Sho<span className="text-[#2E8B57]">pify</span>
         </Link>
-
-        <div className="flex space-x-4 items-center">
-
-           <UserButton>
-           <UserButton.MenuItems>
-            <UserButton.Action
-            label="My orders"
-            labelIcon={<ClipboardDocumentListIcon className="w-4 h-4" />}
-            onClick={()=>(navigate('/orders'))}
-          />
-        </UserButton.MenuItems>
-      </UserButton>
-
+        
+        <div className="flex space-x-4 items-center text-center content-center"> 
+          <MoonIcon className="w-5 h-5"/>
+          <ShoppingCartIcon className="w-5 h-5 " onClick={()=> navigate('/cart')}/>
           {isOpen ? (
             <XMarkIcon
               onClick={handleClick}
               className="h-8 w-8 cursor-pointer hover:bg-gray-100 rounded-md p-1"
             />
           ) : (
-            <Bars4Icon
+            <Bars3BottomLeftIcon
               onClick={handleClick}
               className="h-8 w-8 cursor-pointer hover:bg-gray-100 rounded-md p-1"
             />
@@ -127,16 +121,25 @@ const MobileNavigation = () => {
         </ul>
 
         <div className="space-y-3 flex flex-col p-4 border-t border-gray-200">
-          {!isSignedIn &&
-          <SignInButton mode="modal">
-          {!isLoaded ? (
-            <Skeletonbutton />
-          ) :  (
-            <button className="menu-item capitalize px-5 py-2 rounded border shadow cursor-pointer bg-[#48976a] text-white hover:bg-[#3EA56F]">
-              Get Started
-            </button>
-          ) }
-        </SignInButton>}
+                      {!isLoaded ? (
+              <Skeletonbutton />
+            ) : isSignedIn ? (
+              <UserButton>
+                <UserButton.MenuItems>
+                  <UserButton.Action
+                    label="My orders"
+                    labelIcon={<ClipboardDocumentListIcon className="w-4 h-4" />}
+                    onClick={() => navigate('/orders')}
+                  />
+                </UserButton.MenuItems>
+              </UserButton>
+            ) : (
+              <SignInButton mode="modal">
+                <button className="menu-item capitalize px-5 py-2 rounded border shadow cursor-pointer bg-[#48976a] text-white hover:bg-[#3EA56F]">
+                  Get Started
+                </button>
+              </SignInButton>
+            )}
         </div>
       </div>
     </section>

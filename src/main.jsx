@@ -4,6 +4,9 @@ import './index.css'
 import App from './App.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
 import { BrowserRouter } from 'react-router'
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
 
 const clerkPukey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
