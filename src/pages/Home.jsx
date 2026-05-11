@@ -139,6 +139,7 @@ const Home = () => {
               </div> 
            
 </section>
+{ /* 2 */ }
 
     </div>
   )
